@@ -1,20 +1,12 @@
 {
   "name": "ydl-react-components",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "type": "module",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
   "files": [
     "dist"
   ],
-  "exports": {
-    "./lib": {
-      "import": "./dist/lib/index.d.ts"
-    },
-    "./hooks": {
-      "import": "./dist/lib/hooks/index.d.ts"
-    }
-  },
   "scripts": {
     "prebuild": "npm run test && rimraf dist",
     "build": "rollup -c --bundleConfigAsCjs",
