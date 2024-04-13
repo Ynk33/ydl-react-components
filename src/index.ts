@@ -1,3 +1,2 @@
-import TestComponent from "./TestComponent/TestComponent";
-
-export { TestComponent };
+export * from "./lib";
+export * from "./components";

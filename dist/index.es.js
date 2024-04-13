@@ -1,5 +1,33 @@
 import React from 'react';
 
+/**
+ * Return the scroll properties of the given element.
+ * @param element The element to get the scroll from.
+ * @returns {Array<number>} The scroll data of the element.
+ */
+function getScroll(element) {
+    var elementAsWindow = element;
+    var elementAsHTMLElement = element;
+    if (elementAsWindow.scrollX !== undefined) {
+        return [elementAsWindow.scrollX, elementAsWindow.scrollY];
+    }
+    else if (elementAsHTMLElement.scrollLeft !== undefined) {
+        return [elementAsHTMLElement.scrollLeft, elementAsHTMLElement.scrollTop];
+    }
+    else {
+        console.error("The element is neither of type Window or HTMLElement", element);
+        return [0, 0];
+    }
+}
+// 
+/**
+ * Generate an unique ID.
+ * @returns {string} A unique ID.
+ */
+function getUID() {
+    return Date.now().toString(36) + Math.random().toString(36).substr(2);
+}
+
 function styleInject(css, ref) {
   if ( ref === void 0 ) ref = {};
   var insertAt = ref.insertAt;
@@ -37,5 +65,5 @@ function TestComponent(_a) {
         React.createElement("h2", null, "Made with love by Harvey")));
 }
 
-export { TestComponent };
+export { TestComponent, getScroll, getUID };
 //# sourceMappingURL=index.es.js.map
