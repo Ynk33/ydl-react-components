@@ -32,6 +32,20 @@ function getUID() {
 }
 
 /**
+ * Custom hook to have a callback called repeatingly.
+ * @param interval Time to wait before triggering the callback.
+ * @param callback Callback to call after each interval.
+ */
+function useRepeatingCallback(interval, callback) {
+    React.useEffect(function () {
+        var autoPlayInterval = setInterval(function () {
+            callback();
+        }, interval);
+        return function () { return clearInterval(autoPlayInterval); };
+    });
+}
+
+/**
  * Get the window dimensions.
  * @returns The current window dimensions.
  */
@@ -493,6 +507,7 @@ exports.TestComponent = TestComponent;
 exports.WordpressAPI = WordpressAPI;
 exports.getScroll = getScroll;
 exports.getUID = getUID;
+exports.useRepeatingCallback = useRepeatingCallback;
 exports.useScrollVisiblityObserver = useScrollVisiblityObserver;
 exports.useScrollingNavigation = useScrollingNavigation;
 exports.useWindowDimensions = useWindowDimensions;

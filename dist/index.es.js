@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { unstable_noStore } from 'next/cache';
 
 /**
@@ -27,6 +27,20 @@ function getScroll(element) {
  */
 function getUID() {
     return Date.now().toString(36) + Math.random().toString(36).substr(2);
+}
+
+/**
+ * Custom hook to have a callback called repeatingly.
+ * @param interval Time to wait before triggering the callback.
+ * @param callback Callback to call after each interval.
+ */
+function useRepeatingCallback(interval, callback) {
+    useEffect(function () {
+        var autoPlayInterval = setInterval(function () {
+            callback();
+        }, interval);
+        return function () { return clearInterval(autoPlayInterval); };
+    });
 }
 
 /**
@@ -487,5 +501,5 @@ function TestComponent(_a) {
         React.createElement("h2", null, "Made with love by Harvey")));
 }
 
-export { Direction, TestComponent, WordpressAPI, getScroll, getUID, useScrollVisiblityObserver, useScrollingNavigation, useWindowDimensions };
+export { Direction, TestComponent, WordpressAPI, getScroll, getUID, useRepeatingCallback, useScrollVisiblityObserver, useScrollingNavigation, useWindowDimensions };
 //# sourceMappingURL=index.es.js.map
