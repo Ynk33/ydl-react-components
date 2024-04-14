@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { unstable_noStore } from 'next/cache';
+import Image from 'next/image';
 
 /**
  * Return the scroll properties of the given element.
@@ -491,6 +492,24 @@ function styleInject(css, ref) {
   }
 }
 
+var css_248z$1 = "/*\r\n  COLORS\r\n*/\n/*\r\n  COLOR SET\r\n*/\n/*\r\n  BREAK-POINTS\r\n*/\n/*\r\n  SIZING\r\n*/\n/*\r\n  EXPORT\r\n*/\n\n.wide-2-columns-module_container__Ns-G4 {\n  flex-grow: 1;\n  display: flex;\n  flex-flow: row wrap;\n  align-items: stretch;\n  justify-content: center;\n  height: 100%;\n  width: 100%; }\n  .wide-2-columns-module_container__Ns-G4 .wide-2-columns-module_picture__rtwG9 {\n    flex: 1 0 0px;\n    position: relative;\n    overflow: hidden; }\n    .wide-2-columns-module_container__Ns-G4 .wide-2-columns-module_picture__rtwG9 img {\n      position: absolute;\n      top: 50%;\n      left: 50%;\n      transform: translate(-100%, -50%);\n      max-width: initial;\n      transition: transform 0.5s ease-out; }\n      .wide-2-columns-module_container__Ns-G4 .wide-2-columns-module_picture__rtwG9 img.wide-2-columns-module_fixed__0b43N {\n        transform: translate(-50%, -50%); }\n      .wide-2-columns-module_container__Ns-G4 .wide-2-columns-module_picture__rtwG9 img.wide-2-columns-module_animate__dfCiK {\n        transform: translate(-50%, -50%); }\n  .wide-2-columns-module_container__Ns-G4.wide-2-columns-module_reverse__f4PH- {\n    flex-flow: row-reverse wrap; }\n    .wide-2-columns-module_container__Ns-G4.wide-2-columns-module_reverse__f4PH- .wide-2-columns-module_picture__rtwG9 img {\n      transform: translate(0%, -50%); }\n      .wide-2-columns-module_container__Ns-G4.wide-2-columns-module_reverse__f4PH- .wide-2-columns-module_picture__rtwG9 img.wide-2-columns-module_fixed__0b43N {\n        transform: translate(-50%, -50%); }\n      .wide-2-columns-module_container__Ns-G4.wide-2-columns-module_reverse__f4PH- .wide-2-columns-module_picture__rtwG9 img.wide-2-columns-module_animate__dfCiK {\n        transform: translate(-50%, -50%); }\n  .wide-2-columns-module_container__Ns-G4 .wide-2-columns-module_content__nNpxv {\n    flex: 1 0 0px;\n    padding: 50px;\n    display: flex;\n    flex-flow: column;\n    align-items: flex-start;\n    justify-content: center; }\n\n@media (max-width: 992px) {\n  .wide-2-columns-module_container__Ns-G4 {\n    position: relative;\n    overflow: hidden; }\n    .wide-2-columns-module_container__Ns-G4 .wide-2-columns-module_picture__rtwG9 {\n      position: absolute;\n      top: 0;\n      left: 0;\n      height: 100%;\n      width: 100%;\n      filter: blur(3px);\n      transform: scale(105%); }\n    .wide-2-columns-module_container__Ns-G4 .wide-2-columns-module_content__nNpxv {\n      position: relative;\n      background-image: linear-gradient(125deg, rgba(255, 159, 28, 0.7), rgba(253, 255, 252, 0.7)); } }\n";
+var styles = {"tablet":"992px","mobile":"576px","container":"wide-2-columns-module_container__Ns-G4","picture":"wide-2-columns-module_picture__rtwG9","fixed":"wide-2-columns-module_fixed__0b43N","animate":"wide-2-columns-module_animate__dfCiK","reverse":"wide-2-columns-module_reverse__f4PH-","content":"wide-2-columns-module_content__nNpxv"};
+styleInject(css_248z$1);
+
+var Layout;
+(function (Layout) {
+    Layout[Layout["PictureFirst"] = 0] = "PictureFirst";
+    Layout[Layout["ContentFirst"] = 1] = "ContentFirst";
+})(Layout || (Layout = {}));
+function Wide2Columns(_a) {
+    var picture = _a.picture, _b = _a.layout, layout = _b === void 0 ? Layout.ContentFirst : _b, children = _a.children, _c = _a.className, className = _c === void 0 ? "" : _c, _d = _a.animate, animate = _d === void 0 ? false : _d;
+    useScrollVisiblityObserver("." + styles.picture + " img", animate ? styles.animate : "");
+    return (React.createElement("div", { className: "\n        ".concat(className, "\n        ").concat(styles.container, "\n        ").concat(layout === Layout.ContentFirst ? styles.reverse : "", "\n      ") },
+        React.createElement("div", { className: styles.picture },
+            React.createElement(Image, { src: picture.full_image_url, alt: picture.title, height: picture.media_details.height, width: picture.media_details.width, className: animate ? "" : styles.fixed })),
+        React.createElement("div", { className: "".concat(styles.content) }, children)));
+}
+
 var css_248z = ".test-component {\n  background-color: white;\n  border: 1px solid black;\n  padding: 16px;\n  width: 360px;\n  text-align: center; }\n  .test-component .heading {\n    font-size: 64px; }\n  .test-component.test-component-secondary {\n    background-color: black;\n    color: white; }\n";
 styleInject(css_248z);
 
@@ -501,5 +520,5 @@ function TestComponent(_a) {
         React.createElement("h2", null, "Made with love by Harvey")));
 }
 
-export { Direction, TestComponent, WordpressAPI, getScroll, getUID, useRepeatingCallback, useScrollVisiblityObserver, useScrollingNavigation, useWindowDimensions };
+export { Direction, TestComponent, Wide2Columns, WordpressAPI, getScroll, getUID, useRepeatingCallback, useScrollVisiblityObserver, useScrollingNavigation, useWindowDimensions };
 //# sourceMappingURL=index.es.js.map

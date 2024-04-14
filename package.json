@@ -1,6 +1,6 @@
 {
   "name": "ydl-react-components",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "type": "module",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
@@ -10,6 +10,8 @@
   "scripts": {
     "prebuild": "npm run test && rimraf dist",
     "build": "rollup -c --bundleConfigAsCjs",
+    "prebuild:no-test": "rimraf dist",
+    "build:no-test": "rollup -c --bundleConfigAsCjs",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "test": "jest",

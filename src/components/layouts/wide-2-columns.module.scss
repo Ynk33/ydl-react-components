@@ -1,0 +1,88 @@
+@import "../variables";
+@import "../mixins";
+
+.container {
+  flex-grow: 1;
+
+  display: flex;
+  flex-flow: row wrap;
+  align-items: stretch;
+  justify-content: center;
+
+  height: 100%;
+  width: 100%;
+
+  .picture {
+    flex: 1 0 0px;
+    position: relative;
+    overflow: hidden;
+
+    img {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-100%, -50%);
+      max-width: initial;
+
+      transition: transform 0.5s ease-out;
+
+      &.fixed {
+        transform: translate(-50%, -50%);
+      }
+
+      &.animate {
+        transform: translate(-50%, -50%);
+      }
+    }
+  }
+
+  &.reverse {
+    flex-flow: row-reverse wrap;
+
+    .picture img {
+      transform: translate(0%, -50%);
+
+      &.fixed {
+        transform: translate(-50%, -50%);
+      }
+
+      &.animate {
+        transform: translate(-50%, -50%);
+      }
+    }
+  }
+
+  .content {
+    flex: 1 0 0px;
+    padding: 50px;
+
+    display: flex;
+    flex-flow: column;
+    align-items: flex-start;
+    justify-content: center;
+  }
+}
+
+@include tablet() {
+  .container {
+
+    position: relative;
+    overflow: hidden;
+
+    .picture {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+
+      filter: blur(3px);
+      transform: scale(105%);
+    }
+
+    .content {
+      position: relative;
+      background-image: linear-gradient(125deg, rgba($ternary, 0.7), rgba($white, 0.7));
+    }
+  }
+}

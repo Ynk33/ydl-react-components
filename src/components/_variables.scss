@@ -1,0 +1,57 @@
+/*
+  COLORS
+*/
+
+$white: #fdfffc !default;
+$background: #FFE6E8 !default;
+$background-alt: #DAD2D8 !default;
+$black: #011627 !default;
+$primary: #2ec4b6 !default;
+$secondary: #e71d36 !default;
+$ternary: #ff9f1c !default;
+
+/*
+  COLOR SET
+*/
+$color-primary: $primary !default;
+$color-secondary: $secondary !default;
+$color-ternary: $ternary !default;
+
+$color-background: $background !default;
+$color-nav: $white !default;
+
+$color-text-primary: $black !default;
+$color-text-secondary: $primary !default;
+$color-hover: $primary !default;
+$color-active: $white !default;
+$color-active-home: $ternary !default;
+
+$opacity-light: 0.7 !default;
+$opacity-extra-light: 0.4 !default;
+
+/*
+  BREAK-POINTS
+*/
+$tablet: 992px !default;
+$mobile: 576px !default;
+
+/*
+  SIZING
+*/
+
+$nav-height: 70px !default;
+$mobile-nav-height: calc($nav-height * 1.5) !default;
+$mobile-logo-height: 60px !default;
+
+$footer-height: 10vh !default;
+
+$section-min-height: calc(100vh - $nav-height) !default;
+$last-section-height: calc(90vh - $nav-height) !default;
+
+/*
+  EXPORT
+*/
+:export {
+  tablet: $tablet;
+  mobile: $mobile;
+}
