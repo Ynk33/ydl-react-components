@@ -2,10 +2,9 @@
   "name": "ydl-react-components",
   "version": "0.0.5",
   "type": "module",
-  "main": "dist/index.js",
-  "module": "dist/index.es.js",
+  "main": "src/index.ts",
   "files": [
-    "dist"
+    "src"
   ],
   "scripts": {
     "prebuild": "npm run test && rimraf dist",
