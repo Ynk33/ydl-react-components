@@ -498,15 +498,15 @@ var css_248z$1 = "/*\r\n  COLORS\r\n*/\n/*\r\n  COLOR SET\r\n*/\n/*\r\n  BREAK-P
 var styles = {"tablet":"992px","mobile":"576px","container":"wide-2-columns-module_container__Ns-G4","picture":"wide-2-columns-module_picture__rtwG9","fixed":"wide-2-columns-module_fixed__0b43N","animate":"wide-2-columns-module_animate__dfCiK","reverse":"wide-2-columns-module_reverse__f4PH-","content":"wide-2-columns-module_content__nNpxv"};
 styleInject(css_248z$1);
 
-var Layout;
+exports.Layout = void 0;
 (function (Layout) {
     Layout[Layout["PictureFirst"] = 0] = "PictureFirst";
     Layout[Layout["ContentFirst"] = 1] = "ContentFirst";
-})(Layout || (Layout = {}));
+})(exports.Layout || (exports.Layout = {}));
 function Wide2Columns(_a) {
-    var picture = _a.picture, _b = _a.layout, layout = _b === void 0 ? Layout.ContentFirst : _b, children = _a.children, _c = _a.className, className = _c === void 0 ? "" : _c, _d = _a.animate, animate = _d === void 0 ? false : _d;
+    var picture = _a.picture, _b = _a.layout, layout = _b === void 0 ? exports.Layout.ContentFirst : _b, children = _a.children, _c = _a.className, className = _c === void 0 ? "" : _c, _d = _a.animate, animate = _d === void 0 ? false : _d;
     useScrollVisiblityObserver("." + styles.picture + " img", animate ? styles.animate : "");
-    return (React.createElement("div", { className: "\n        ".concat(className, "\n        ").concat(styles.container, "\n        ").concat(layout === Layout.ContentFirst ? styles.reverse : "", "\n      ") },
+    return (React.createElement("div", { className: "\n        ".concat(className, "\n        ").concat(styles.container, "\n        ").concat(layout === exports.Layout.ContentFirst ? styles.reverse : "", "\n      ") },
         React.createElement("div", { className: styles.picture },
             React.createElement(Image, { src: picture.full_image_url, alt: picture.title, height: picture.media_details.height, width: picture.media_details.width, className: animate ? "" : styles.fixed })),
         React.createElement("div", { className: "".concat(styles.content) }, children)));

@@ -520,5 +520,5 @@ function TestComponent(_a) {
         React.createElement("h2", null, "Made with love by Harvey")));
 }
 
-export { Direction, TestComponent, Wide2Columns, WordpressAPI, getScroll, getUID, useRepeatingCallback, useScrollVisiblityObserver, useScrollingNavigation, useWindowDimensions };
+export { Direction, Layout, TestComponent, Wide2Columns, WordpressAPI, getScroll, getUID, useRepeatingCallback, useScrollVisiblityObserver, useScrollingNavigation, useWindowDimensions };
 //# sourceMappingURL=index.es.js.map
