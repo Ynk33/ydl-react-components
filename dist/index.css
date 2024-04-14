@@ -1,0 +1,82 @@
+/*
+  COLORS
+*/
+/*
+  COLOR SET
+*/
+/*
+  BREAK-POINTS
+*/
+/*
+  SIZING
+*/
+/*
+  EXPORT
+*/
+
+.wide-2-columns-module_container__Ns-G4 {
+  flex-grow: 1;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: stretch;
+  justify-content: center;
+  height: 100%;
+  width: 100%; }
+  .wide-2-columns-module_container__Ns-G4 .wide-2-columns-module_picture__rtwG9 {
+    flex: 1 0 0px;
+    position: relative;
+    overflow: hidden; }
+    .wide-2-columns-module_container__Ns-G4 .wide-2-columns-module_picture__rtwG9 img {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-100%, -50%);
+      max-width: initial;
+      transition: transform 0.5s ease-out; }
+      .wide-2-columns-module_container__Ns-G4 .wide-2-columns-module_picture__rtwG9 img.wide-2-columns-module_fixed__0b43N {
+        transform: translate(-50%, -50%); }
+      .wide-2-columns-module_container__Ns-G4 .wide-2-columns-module_picture__rtwG9 img.wide-2-columns-module_animate__dfCiK {
+        transform: translate(-50%, -50%); }
+  .wide-2-columns-module_container__Ns-G4.wide-2-columns-module_reverse__f4PH- {
+    flex-flow: row-reverse wrap; }
+    .wide-2-columns-module_container__Ns-G4.wide-2-columns-module_reverse__f4PH- .wide-2-columns-module_picture__rtwG9 img {
+      transform: translate(0%, -50%); }
+      .wide-2-columns-module_container__Ns-G4.wide-2-columns-module_reverse__f4PH- .wide-2-columns-module_picture__rtwG9 img.wide-2-columns-module_fixed__0b43N {
+        transform: translate(-50%, -50%); }
+      .wide-2-columns-module_container__Ns-G4.wide-2-columns-module_reverse__f4PH- .wide-2-columns-module_picture__rtwG9 img.wide-2-columns-module_animate__dfCiK {
+        transform: translate(-50%, -50%); }
+  .wide-2-columns-module_container__Ns-G4 .wide-2-columns-module_content__nNpxv {
+    flex: 1 0 0px;
+    padding: 50px;
+    display: flex;
+    flex-flow: column;
+    align-items: flex-start;
+    justify-content: center; }
+
+@media (max-width: 992px) {
+  .wide-2-columns-module_container__Ns-G4 {
+    position: relative;
+    overflow: hidden; }
+    .wide-2-columns-module_container__Ns-G4 .wide-2-columns-module_picture__rtwG9 {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      filter: blur(3px);
+      transform: scale(105%); }
+    .wide-2-columns-module_container__Ns-G4 .wide-2-columns-module_content__nNpxv {
+      position: relative;
+      background-image: linear-gradient(125deg, rgba(255, 159, 28, 0.7), rgba(253, 255, 252, 0.7)); } }
+
+.test-component {
+  background-color: white;
+  border: 1px solid black;
+  padding: 16px;
+  width: 360px;
+  text-align: center; }
+  .test-component .heading {
+    font-size: 64px; }
+  .test-component.test-component-secondary {
+    background-color: black;
+    color: white; }

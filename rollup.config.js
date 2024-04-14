@@ -3,6 +3,7 @@ import resolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
 import typescript from "rollup-plugin-typescript2";
 import postcss from "rollup-plugin-postcss";
+import scssVariables from "rollup-plugin-sass-variables";
 
 const packageJson = require("./package.json");
 
@@ -22,9 +23,15 @@ export default {
   ],
   plugins: [
     peerDepsExternal(),
-    resolve(),
+    postcss({
+      modules: false,
+      extract: true
+    }),
+    resolve({
+      extensions: ['.js', '.jsx', '.ts', '.tsx'],
+    }),
     commonjs(),
     typescript({ useTsconfigDeclarationDir: true }),
-    postcss()
+    scssVariables()
   ]
 };
