@@ -7,6 +7,7 @@ import type { Menu } from "./Menu";
 import type { Metadata } from "./Metadata";
 import type { Picture } from "./Picture";
 import type { Settings } from "./Settings";
+import type { SocialMedia } from "./SocialMedia";
 
 export type {
   About,
@@ -17,5 +18,6 @@ export type {
   Menu,
   Metadata,
   Picture,
-  Settings
+  Settings,
+  SocialMedia
 }
