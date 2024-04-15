@@ -1,13 +1,9 @@
 import { Picture } from "./Picture";
+import { SocialMedia } from "./SocialMedia";
 
 /**
  * CONTACT
  */
-type SocialMedia = {
-  headline: string,
-  instagram: string
-};
-
 export type Contact = {
   headline: string;
   content: string;
