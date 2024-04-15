@@ -15,7 +15,7 @@ import {
   Size,
   SocialMedia,
 } from "./types";
-export {
+export type {
   About,
   Contact,
   Footer,
