@@ -1,3 +1,5 @@
+"use client";
+
 import styles from "./wide-2-columns.module.scss";
 
 import React, { ReactNode } from "react";
