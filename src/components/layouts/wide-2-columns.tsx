@@ -2,7 +2,7 @@
 
 import styles from "./wide-2-columns.module.scss";
 
-import React, { ReactNode } from "react";
+import { ReactNode } from "react";
 import { Picture, useScrollVisiblityObserver } from "../../lib";
 import Image from "next/image";
 
