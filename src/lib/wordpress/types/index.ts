@@ -1,14 +1,14 @@
-import { About } from "./About";
-import { Contact } from "./Contact";
-import { Footer } from "./Footer";
-import { Gallery } from "./Gallery";
-import { Galleries } from "./Galleries";
-import { Menu } from "./Menu";
-import { Metadata } from "./Metadata";
-import { Picture } from "./Picture";
-import { Settings } from "./Settings";
+import type { About } from "./About";
+import type { Contact } from "./Contact";
+import type { Footer } from "./Footer";
+import type { Gallery } from "./Gallery";
+import type { Galleries } from "./Galleries";
+import type { Menu } from "./Menu";
+import type { Metadata } from "./Metadata";
+import type { Picture } from "./Picture";
+import type { Settings } from "./Settings";
 
-export {
+export type {
   About,
   Contact,
   Footer,
