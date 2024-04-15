@@ -1,11 +1,5 @@
-$white: #ffffff;
-$ternary: #ff0000;
-
-/*
-  BREAK-POINTS
-*/
-$tablet: 992px;
-$mobile: 576px;
+@import "../variables";
+@import "../mixins";
 
 @mixin mobile() {
   @media (max-width: $mobile) {
