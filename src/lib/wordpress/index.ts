@@ -1,10 +1,10 @@
 /**
  * TYPES
  */
-export * from "@/lib/wordpress/types";
+export * from "./types";
 
 /**
  * WORDPRESS API
  */
-import WordpressAPI from "@/lib/wordpress/WordpressAPI";
+import WordpressAPI from "./WordpressAPI";
 export { WordpressAPI };

@@ -3,7 +3,7 @@
 import styles from "./Wide2Columns.module.scss";
 
 import { ReactNode } from "react";
-import { Picture, useScrollVisiblityObserver } from "@/lib";
+import { Picture, useScrollVisiblityObserver } from "../../lib";
 import Image from "next/image";
 
 export enum Layout {

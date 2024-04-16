@@ -1,2 +1,2 @@
-export * from "@/layouts/index";
-export * from "@/partials/index";
+export * from "./index";
+export * from "./index";

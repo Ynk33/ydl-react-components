@@ -1,2 +1,2 @@
-import SocialMediaComponent from "@/partials/SocialMedia/SocialMediaComponent";
+import SocialMediaComponent from "./SocialMediaComponent";
 export { SocialMediaComponent };

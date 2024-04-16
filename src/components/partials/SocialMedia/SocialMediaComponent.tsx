@@ -1,7 +1,7 @@
-import styles from "@/partials/SocialMedia/SocialMediaComponent.module.scss";
+import styles from "./SocialMediaComponent.module.scss";
 
-import { SocialMedia } from "@/lib/index";
-import { InstagramButton } from "@/partials/SocialMedia/buttons";
+import { SocialMedia } from "../../../lib";
+import { InstagramButton } from "./buttons";
 
 export default function SocialMediaComponent({
   socialMedia,

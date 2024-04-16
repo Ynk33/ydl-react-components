@@ -1,3 +1,3 @@
-export { getScroll, getUID } from "@/lib/utils";
-export * from "@/lib/hooks";
-export * from "@/lib/wordpress";
+export { getScroll, getUID } from "./utils";
+export * from "./hooks";
+export * from "./wordpress";

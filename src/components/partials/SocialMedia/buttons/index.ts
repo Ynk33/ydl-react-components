@@ -1,2 +1,2 @@
-import InstagramButton from "@/partials/SocialMedia/buttons/InstagramButton";
+import InstagramButton from "./InstagramButton";
 export { InstagramButton };

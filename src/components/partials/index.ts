@@ -1,2 +1,2 @@
-export * from "@/partials/Modal";
-export * from "@/partials/SocialMedia";
+export * from "./Modal";
+export * from "./SocialMedia";

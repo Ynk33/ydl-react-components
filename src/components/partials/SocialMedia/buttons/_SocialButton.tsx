@@ -1,6 +1,6 @@
-import styles from "@/partials/social-media/buttons/_SocialButton.module.scss";
+import styles from "./_SocialButton.module.scss";
 
-import { SocialButtonProps } from "@/partials/SocialMedia/buttons/_SocialButtonProps";
+import { SocialButtonProps } from "./_SocialButtonProps";
 
 export default function SocialButton({
   link,
