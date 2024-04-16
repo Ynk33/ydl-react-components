@@ -20,9 +20,7 @@ export default class FontProvider {
    * @returns The singleton instance of the FrontProvider.
    */
   static getInstance(): FontProvider {
-    console.log(("##### FONTPROVIDER #####"));
     if (FontProvider._instance === undefined) {
-      console.log("##### no instance, create a new one");
       FontProvider._instance = new FontProvider();
     }
 
@@ -47,8 +45,6 @@ export default class FontProvider {
    * @returns {NextFont} The primary font.
    */
   public static get PrimaryFont(): NextFont {
-    console.log(FontProvider.getInstance());
-    console.log(FontProvider.getInstance().fonts);
     return FontProvider.getInstance().fonts[0];
   }
 
@@ -56,8 +52,6 @@ export default class FontProvider {
    * @returns {NextFont} The secondary font.
    */
   public static get SecondaryFont(): NextFont {
-    console.log(FontProvider.getInstance());
-    console.log(FontProvider.getInstance().fonts);
     return FontProvider.getInstance().fonts[1];
   }
 }

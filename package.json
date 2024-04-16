@@ -1,6 +1,6 @@
 {
   "name": "ydl-react-components",
-  "version": "0.0.7",
+  "version": "1.0.0",
   "type": "module",
   "main": "src/index.ts",
   "files": [
