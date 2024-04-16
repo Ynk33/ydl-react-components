@@ -1,0 +1,47 @@
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -10000;
+
+  height: 100vh;
+  width: 100vw;
+
+  background-color: white;
+  opacity: 0;
+
+  &.open {
+    z-index: 10000;
+    opacity: 1;
+  }
+
+  .close {
+    position: absolute;
+    right: 32px;
+    top: 32px;
+    width: 50px;
+    height: 50px;
+    z-index: 25;
+
+    &:before, &:after {
+      position: absolute;
+      left: 50%;
+      content: ' ';
+      height: 50px;
+      width: 4px;
+      background-color: $white;
+
+      transition: background-color 0.2s;
+    }
+    &:before {
+      transform: rotate(45deg);
+    }
+    &:after {
+      transform: rotate(-45deg);
+    }
+
+    &:hover:before, &:hover:after {
+      background-color: $color-hover;
+    }
+  }
+}
