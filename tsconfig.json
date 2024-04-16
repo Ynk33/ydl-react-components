@@ -16,7 +16,10 @@
       {
         "name": "next"
       }
-    ]
+    ],
+    "paths": {
+      "@/fonts": ["./src/components/styles/fonts.tsx"]
+    }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
   "exclude": ["node_modules"]

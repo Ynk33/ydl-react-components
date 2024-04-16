@@ -1,0 +1,183 @@
+$arrow-width: 4px;
+$arrow-size: 30px;
+
+.carousel {
+
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+
+  .carouselInner {
+
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    height: 100%;
+    width: 100%;
+
+    scrollbar-width: none;
+    ::-webkit-scrollbar {
+      display: none;
+    }
+
+    .carouselItem {
+      flex-shrink: 0;
+      transform-origin: center center;
+      position: relative;
+      overflow: hidden;
+
+      height: auto;
+      width: 100%;
+      
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .background {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+        height: 110%;
+        width: 110%;
+        z-index: 5;
+
+        background-size: cover;
+        filter: blur(8px) brightness(50%);
+      }
+
+      img {
+        z-index: 10;
+        
+        &.contain {
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+        }
+      }
+
+      .description {
+        position: absolute;
+        bottom: 10%;
+        left: 50%;
+        z-index: 12;
+        
+        height: auto;
+        min-height: 10%;
+        width: 80%;
+        padding: 10px 0;
+
+        transform: translateX(-50%);
+        
+        text-align: center;
+
+        .title {
+          color: $white;
+          font-size: 2.5em;
+        }
+
+        .caption {
+          color: $white;
+          font-size: 1.3em;
+        }
+      }
+    }
+  }
+
+  .textOverlay {
+    position: absolute;
+    bottom: 0px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 11;
+    height: 40%;
+    width: 80%;
+
+    background-image: linear-gradient(to bottom, rgba(#000, 0), rgba(#000, 0.5) 60%);
+  }
+
+  .carouselNavigation {
+    position: absolute;
+    bottom: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 25%;
+    z-index: 20;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+    a {
+      width: 1.2rem;
+      height: 1.2rem;
+      background: $white;
+      text-decoration: none;
+      border-radius: 50%;
+      aspect-ratio: 1 / 1;
+      position: relative;
+
+      &:hover {
+        background: $color-hover;
+      }
+      
+      &.active {
+        background: $color-ternary;
+      }
+    }
+  }
+
+  .carouselArrow {
+    position: absolute;
+    top: 0;
+    z-index: 20;
+    height: 100%;
+    width: 10%;
+    background-color: rgba($color: #000, $alpha: 0.2);
+    cursor: pointer;
+    transition: background-color 0.2s;
+    
+    &::after {
+      content: ' ';
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translateX(-50%) translateY(-50%);
+      border-top: $white solid $arrow-width;
+      border-right: $white solid $arrow-width;
+      border-radius: 3px;
+      height: $arrow-size;
+      width: $arrow-size;
+
+      transition: border-color 0.2s;
+    }
+    
+    &.left {
+      left: 0;
+      
+      &::after
+      {
+        transform: rotate(-135deg);
+      }
+    }
+    &.right {
+      right: 0;
+      
+      &::after
+      {
+        transform: rotate(45deg);
+      }
+    }
+
+    &:hover
+    {
+      background-color: rgba($color: #000000, $alpha: 0.6);
+
+      &:after {
+        border-color: $color-hover;
+      }
+    }
+}
+}
