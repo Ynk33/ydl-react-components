@@ -23,8 +23,6 @@ export default class FontProvider {
     if (FontProvider._instance === undefined) {
       FontProvider._instance = new FontProvider();
     }
-
-    console.log("##### return instance", FontProvider._instance);
     return FontProvider._instance;
   }
 
