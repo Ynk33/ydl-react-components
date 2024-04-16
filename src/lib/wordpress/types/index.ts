@@ -1,13 +1,13 @@
-import type { About } from "./About";
-import type { Contact } from "./Contact";
-import type { Footer } from "./Footer";
-import type { Gallery } from "./Gallery";
-import type { Galleries } from "./Galleries";
-import type { Menu } from "./Menu";
-import type { Metadata } from "./Metadata";
-import type { Picture } from "./Picture";
-import type { Settings } from "./Settings";
-import type { SocialMedia } from "./SocialMedia";
+import type { About } from "@/lib/wordpress/types/About";
+import type { Contact } from "@/lib/wordpress/types/Contact";
+import type { Footer } from "@/lib/wordpress/types/Footer";
+import type { Gallery } from "@/lib/wordpress/types/Gallery";
+import type { Galleries } from "@/lib/wordpress/types/Galleries";
+import type { Menu } from "@/lib/wordpress/types/Menu";
+import type { Metadata } from "@/lib/wordpress/types/Metadata";
+import type { Picture } from "@/lib/wordpress/types/Picture";
+import type { Settings } from "@/lib/wordpress/types/Settings";
+import type { SocialMedia } from "@/lib/wordpress/types/SocialMedia";
 
 export type {
   About,

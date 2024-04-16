@@ -1,2 +1,2 @@
-export * from "./Modal";
-export * from "./TestComponent";
+export * from "@/partials/Modal";
+export * from "@/partials/SocialMedia";

@@ -1,9 +1,9 @@
 "use client";
 
-import styles from "./wide-2-columns.module.scss";
+import styles from "./Wide2Columns.module.scss";
 
 import { ReactNode } from "react";
-import { Picture, useScrollVisiblityObserver } from "../../lib";
+import { Picture, useScrollVisiblityObserver } from "@/lib";
 import Image from "next/image";
 
 export enum Layout {
