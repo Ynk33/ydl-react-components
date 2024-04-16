@@ -1,9 +1,9 @@
 import styles from "./Carousel.module.scss";
 
-import { Fill } from "./Carousel";
 import Image from "next/image";
+import { Fill } from "./Carousel";
 import { Picture } from "../../../lib";
-import { primaryFont, secondaryFont } from "@/fonts";
+import { FontProvider } from "../../../lib/fonts";
 
 export default function CarouselItem({
   id,
@@ -16,6 +16,10 @@ export default function CarouselItem({
   fill: Fill;
   showCaption?: boolean
 }) {
+
+  const primaryFont = FontProvider.PrimaryFont;
+  const secondaryFont = FontProvider.SecondaryFont;
+
   return (
     <div className={styles.carouselItem} id={id}>
       <div
