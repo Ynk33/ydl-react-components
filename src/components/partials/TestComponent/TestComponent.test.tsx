@@ -4,6 +4,7 @@ import { render } from "@testing-library/react";
 
 import TestComponent from "./TestComponent";
 import { TestComponentProps } from "./TestComponent.types";
+import style from "./TestComponent.module.scss";
 
 describe("Test Component", () => {
   let props: TestComponentProps;
@@ -21,7 +22,7 @@ describe("Test Component", () => {
 
     const testComponent = getByTestId("test-component");
 
-    expect(testComponent).toHaveClass("test-component-primary");
+    expect(testComponent).toHaveClass(style.primary);
   });
 
   it("should have secondary className with theme set as secondary", () => {
@@ -30,6 +31,6 @@ describe("Test Component", () => {
 
     const testComponent = getByTestId("test-component");
 
-    expect(testComponent).toHaveClass("test-component-secondary");
+    expect(testComponent).toHaveClass(style.secondary);
   });
 });

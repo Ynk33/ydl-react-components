@@ -21,14 +21,19 @@ describe("Test WordpressAPI", () => {
   });
 
   it("WordpressAPI.URLs should point to http://localhost", () => {
-    expect(WordpressAPI.getInstance().testUrl()).toContain("http://localhost");
+    expect(WordpressAPI.testUrl()).toContain("http://localhost");
   });
 
   it("WordpressAPI.fetchMetadata() should return something not empty", async () => {
 
-    const metadata = await WordpressAPI.getInstance().fetchMetadata();
+    const metadata = await WordpressAPI.fetchMetadata();
 
     expect(metadata).not.toBe(undefined);
     expect(metadata.title).not.toBe(undefined);
   });
+
+  it("WordpressAPI.isInMaintenance() should return a boolean", async () => {
+    const isInMaintenance = await WordpressAPI.isInMaintenanceMode();
+    expect(isInMaintenance === true || isInMaintenance === false).toBeTruthy();
+  })
 });
