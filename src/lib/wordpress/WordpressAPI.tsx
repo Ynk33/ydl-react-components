@@ -66,9 +66,9 @@ class WordpressAPI {
    * @returns A Promise with the response, in the provided T format.
    */
   private async Get<T>(url: string): Promise<T> {
+    console.log("Fetching " + url + "...");
     try {
       const response: Response = await fetch(url);
-      console.log("Fetching " + url + "...");
       if (!response.ok) {
         throw new Error("Network response was not OK.");
       }
