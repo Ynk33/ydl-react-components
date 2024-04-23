@@ -159,7 +159,7 @@ $arrow-size: 30px;
       
       &::after
       {
-        transform: translate(-50%, -50%), rotate(-135deg);
+        transform: translate(-50%, -50%) rotate(-135deg);
       }
     }
     &.right {
@@ -167,7 +167,7 @@ $arrow-size: 30px;
       
       &::after
       {
-        transform: translate(-50%, -50%), rotate(45deg);
+        transform: translate(-50%, -50%) rotate(45deg);
       }
     }
 
