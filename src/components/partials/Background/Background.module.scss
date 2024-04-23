@@ -1,0 +1,12 @@
+.background {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  height: 110%;
+  width: 110%;
+  z-index: 5;
+
+  background-size: cover;
+  filter: blur(8px) brightness(50%);
+}

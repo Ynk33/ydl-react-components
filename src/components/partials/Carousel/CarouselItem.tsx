@@ -4,6 +4,7 @@ import Image from "next/image";
 import { Fill } from "./Carousel";
 import { Picture } from "../../../lib";
 import { FontProvider } from "../../../lib/fonts";
+import Background from "../Background/Background";
 
 export default function CarouselItem({
   id,
@@ -22,10 +23,7 @@ export default function CarouselItem({
 
   return (
     <div className={styles.carouselItem} id={id}>
-      <div
-        className={styles.background}
-        style={{ backgroundImage: `url(${picture.full_image_url})` }}
-      />
+      <Background src={picture.full_image_url} />
       <Image
         className={fill === Fill.Contain ? styles.contain : ""}
         src={picture.full_image_url}
