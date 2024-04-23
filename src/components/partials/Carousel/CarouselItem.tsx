@@ -23,7 +23,7 @@ export default function CarouselItem({
 
   return (
     <div className={styles.carouselItem} id={id}>
-      <Background src={picture.full_image_url} />
+      <Background picture={picture} />
       <Image
         className={fill === Fill.Contain ? styles.contain : ""}
         src={picture.full_image_url}
