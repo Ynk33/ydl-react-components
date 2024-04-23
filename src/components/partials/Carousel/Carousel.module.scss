@@ -135,6 +135,7 @@ $arrow-size: 30px;
     z-index: 20;
     height: 100%;
     width: 10%;
+    min-width: 100px;
     background-color: rgba($color: #000, $alpha: 0.2);
     cursor: pointer;
     transition: background-color 0.2s;
@@ -144,7 +145,6 @@ $arrow-size: 30px;
       position: absolute;
       left: 50%;
       top: 50%;
-      transform: translateX(-50%) translateY(-50%);
       border-top: $white solid $arrow-width;
       border-right: $white solid $arrow-width;
       border-radius: 3px;
@@ -159,7 +159,7 @@ $arrow-size: 30px;
       
       &::after
       {
-        transform: rotate(-135deg);
+        transform: translate(-50%, -50%), rotate(-135deg);
       }
     }
     &.right {
@@ -167,7 +167,7 @@ $arrow-size: 30px;
       
       &::after
       {
-        transform: rotate(45deg);
+        transform: translate(-50%, -50%), rotate(45deg);
       }
     }
 
