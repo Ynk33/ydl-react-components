@@ -8,6 +8,7 @@ export default function Background({ src }: { src: string }) {
       src={src}
       alt="background"
       sizes="100vw"
+      fill
       className={styles.background}
     />
   );
