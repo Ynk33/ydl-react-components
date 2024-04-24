@@ -2,6 +2,7 @@ import { unstable_noStore as noStore } from "next/cache";
 import {
   About,
   Contact,
+  ContactMessage,
   Footer,
   Galleries,
   Maintenance,
@@ -71,6 +72,40 @@ class WordpressAPI {
       const response: Response = await fetch(url);
       if (!response.ok) {
         throw new Error("Network response was not OK.");
+      }
+
+      const data = await response.json();
+
+      console.log("Fetch successful!");
+
+      return data;
+    } catch (error) {
+      console.error(
+        "There has been a problem with your fetch operation.",
+        error
+      );
+      return Promise.reject(error);
+    }
+  }
+
+  /**
+   * Send a POSt query to the specified URL.
+   * @param url URL to perform the POST query to.
+   * @param body The data to send.
+   */
+  private async Post(url: string, body: Object) {
+    console.log("Posting " + url + "...");
+    try {
+      const response: Response = await fetch(url, {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(body)
+      });
+
+      if (!response.ok) {
+        throw new Error("Network response was not OK: " + response.body);
       }
 
       const data = await response.json();
@@ -181,6 +216,18 @@ class WordpressAPI {
     noStore();
     return await WordpressAPI.getInstance().Get<Contact>(
       WordpressAPI.getInstance().URLs.contact
+    );
+  }
+
+  /**
+   * Send a message through the Wordpress API.
+   * @param message The message to send.
+   * @returns The Promise to get an answer from the server.
+   */
+  public static async sendMessage(message: ContactMessage): Promise<any> {
+    return await WordpressAPI.getInstance().Post(
+      WordpressAPI.getInstance().URLs.sendEmail,
+      message
     );
   }
 

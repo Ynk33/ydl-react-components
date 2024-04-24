@@ -1,5 +1,5 @@
 import type { About } from "./About";
-import type { Contact } from "./Contact";
+import type { Contact, ContactMessage } from "./Contact";
 import type { Footer } from "./Footer";
 import type { Gallery } from "./Gallery";
 import type { Galleries } from "./Galleries";
@@ -13,6 +13,7 @@ import type { SocialMedia } from "./SocialMedia";
 export type {
   About,
   Contact,
+  ContactMessage,
   Footer,
   Gallery,
   Galleries,

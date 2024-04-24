@@ -10,3 +10,9 @@ export type Contact = {
   picture: Picture;
   social_media: SocialMedia;
 }
+
+export type ContactMessage = {
+  contact_name: string;
+  contact_email: string;
+  contact_message: string;
+}
