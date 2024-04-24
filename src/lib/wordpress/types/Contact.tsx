@@ -16,3 +16,8 @@ export type ContactMessage = {
   contact_email: string;
   contact_message: string;
 }
+
+export type ContactMessageResponse = {
+  status: number;
+  message: string;
+}

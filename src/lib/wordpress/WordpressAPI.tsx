@@ -3,6 +3,7 @@ import {
   About,
   Contact,
   ContactMessage,
+  ContactMessageResponse,
   Footer,
   Galleries,
   Maintenance,
@@ -93,7 +94,7 @@ class WordpressAPI {
    * @param url URL to perform the POST query to.
    * @param body The data to send.
    */
-  private async Post(url: string, body: Object) {
+  private async Post<T>(url: string, body: Object): Promise<T> {
     console.log("Posting " + url + "...");
     try {
       const response: Response = await fetch(url, {
@@ -224,8 +225,8 @@ class WordpressAPI {
    * @param message The message to send.
    * @returns The Promise to get an answer from the server.
    */
-  public static async sendMessage(message: ContactMessage): Promise<any> {
-    return await WordpressAPI.getInstance().Post(
+  public static async sendMessage(message: ContactMessage): Promise<ContactMessageResponse> {
+    return await WordpressAPI.getInstance().Post<ContactMessageResponse>(
       WordpressAPI.getInstance().URLs.sendEmail,
       message
     );

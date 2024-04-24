@@ -1,5 +1,5 @@
 import type { About } from "./About";
-import type { Contact, ContactMessage } from "./Contact";
+import type { Contact, ContactMessage, ContactMessageResponse } from "./Contact";
 import type { Footer } from "./Footer";
 import type { Gallery } from "./Gallery";
 import type { Galleries } from "./Galleries";
@@ -14,6 +14,7 @@ export type {
   About,
   Contact,
   ContactMessage,
+  ContactMessageResponse,
   Footer,
   Gallery,
   Galleries,
