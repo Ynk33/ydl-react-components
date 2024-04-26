@@ -1,7 +1,7 @@
 $animationDuration: 0.25s;
 $transitionProperties: opacity, left, right, top, bottom;
 $transitionDurations: $animationDuration, $animationDuration, $animationDuration, $animationDuration, $animationDuration;
-$transitionDelays: 0s, 0s, 0s, 0s, 0s, 0s;
+$transitionDelays: 0s, 0s, 0s, 0s, 0s;
 
 .alert {
   position: absolute;
