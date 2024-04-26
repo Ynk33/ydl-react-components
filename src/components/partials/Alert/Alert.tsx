@@ -35,7 +35,14 @@ export interface AlertProps {
 /**
  * A stylized div on the top of everything to display some info to the user.
  */
-export default function Alert({ anchor, variant, content, timeout = 5000, show = false, onHide }: AlertProps) {
+export default function Alert({
+  anchor,
+  variant,
+  content,
+  timeout = 5000,
+  show = false,
+  onHide,
+}: AlertProps) {
   const [status, setStatus] = useState("hide");
 
   useEffect(() => {
@@ -45,7 +52,7 @@ export default function Alert({ anchor, variant, content, timeout = 5000, show =
       const hideAlert = () => {
         onHide();
         setStatus("hide");
-      }
+      };
 
       const displayInterval = setInterval(hideAlert, timeout);
 
@@ -53,16 +60,13 @@ export default function Alert({ anchor, variant, content, timeout = 5000, show =
     }
   }, [show]);
 
-
   const font = FontProvider.SecondaryFont;
 
   return (
-    <div className={styles.alertContainer}>
-      <div
-        className={`${font.className} ${styles.alert} ${styles[anchor]} ${styles[variant]} ${styles[status]}`}
-      >
-        {content}
-      </div>
+    <div
+      className={`${font.className} ${styles.alert} ${styles[anchor]} ${styles[variant]} ${styles[status]}`}
+    >
+      {content}
     </div>
   );
 }

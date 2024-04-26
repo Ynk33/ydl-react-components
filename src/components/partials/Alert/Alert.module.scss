@@ -3,14 +3,6 @@ $transitionProperties: opacity, left, right, top, bottom;
 $transitionDurations: $animationDuration, $animationDuration, $animationDuration, $animationDuration, $animationDuration;
 $transitionDelays: 0s, 0s, 0s, 0s, 0s, 0s;
 
-.alertContainer {
-  position: relative;
-  width: 100%;
-  height: 100%;
-
-  overflow: hidden;
-}
-
 .alert {
   position: absolute;
   z-index: 1000;
