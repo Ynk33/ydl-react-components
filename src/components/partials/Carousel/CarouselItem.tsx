@@ -4,7 +4,7 @@ import Image from "next/image";
 import { Fill } from "./Carousel";
 import { Picture } from "../../../lib";
 import { FontProvider } from "../../../lib/fonts";
-import Background from "../Background/Background";
+import { Background } from "../Background";
 
 export default function CarouselItem({
   id,

@@ -4,3 +4,7 @@
 # NPM dependencies
 node_modules/
 
+
+# Storybook
+*storybook.log
+/src/stories/
