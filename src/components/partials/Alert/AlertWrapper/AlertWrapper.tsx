@@ -1,20 +1,28 @@
 import styles from "./AlertWrapper.module.scss";
 
 import { ReactNode } from "react";
-import AlertAnchor from "../AlertAnchor";
+import AlertPositions from "../AlertPositions";
 
+/**
+ * Properties of the AlertWrapper.
+ */
 interface AlertWrapperProps {
   children: ReactNode;
-  position: AlertAnchor;
+  position: AlertPositions;
 }
 
+/**
+ * A container to display a list of Alert in a specific position of the screen.
+ */
 export default function AlertWrapper({
   children,
   position,
 }: AlertWrapperProps) {
-  return children && (
-    <div className={`${styles.wrapper} ${styles[`${position}`]}`}>
-      {children}
-    </div>
+  return (
+    children && (
+      <div className={`${styles.wrapper} ${styles[`${position}`]}`}>
+        {children}
+      </div>
+    )
   );
 }

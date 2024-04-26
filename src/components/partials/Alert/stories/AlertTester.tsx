@@ -1,24 +1,24 @@
 import useAlert from "../../../../lib/hooks/useAlert";
+import AlertPositions from "../AlertPositions";
 
 export default function AlertTester() {
-
   const alert = useAlert();
 
   const info = () => {
     alert.info("Info");
-  }
+  };
 
   const success = () => {
     alert.success("Success");
-  }
+  };
 
   const warning = () => {
     alert.warning("Warning");
-  }
+  };
 
   const danger = () => {
     alert.danger("Danger");
-  }
+  };
 
   return (
     <>

@@ -1,44 +1,53 @@
 import styles from "./AlertProvider.module.scss";
 
-import {
-  ReactNode,
-  useCallback,
-  useEffect,
-  useState,
-} from "react";
-import AlertAnchor from "./AlertAnchor";
-import AlertVariant from "./AlertVariant";
-import AlertContext from "./AlertContext";
-import AlertOptions from "./AlertOptions";
-import AlertWrapper from "./AlertWrapper/AlertWrapper";
-import AlertComponent, { AlertComponentProps } from "./AlertComponent/AlertComponent";
+import { ReactNode, useCallback, useEffect, useState } from "react";
+import AlertPositions from "../AlertPositions";
+import AlertVariants from "../AlertVariants";
+import AlertContext from "../AlertContext";
+import AlertOptions from "../AlertOptions";
+import AlertWrapper from "../AlertWrapper/AlertWrapper";
+import AlertComponent, {
+  AlertComponentProps,
+} from "../AlertComponent/AlertComponent";
 
+/**
+ * Properties of the AlertProvider.
+ */
 interface AlertProviderProps {
+  /**
+   * The rest of the application.
+   */
   children: ReactNode;
   /**
    * Where the alert should be displayed in the window?
    */
-  position: AlertAnchor;
+  position: AlertPositions;
   /**
    * What variant should the Alert component use?
    */
-  variant: AlertVariant;
+  variant?: AlertVariants;
   /**
    * How long the Alert should stay up?
    */
   timeout?: number;
 }
 
+/**
+ * Entry point of the Alert system. This is the component you should put at the root of your application.
+ */
 export default function AlertProvider({
   children,
-  position = AlertAnchor.TOP_RIGHT,
-  variant = AlertVariant.INFO,
+  position = AlertPositions.TOP_RIGHT,
+  variant = AlertVariants.INFO,
   timeout = 5000,
 }: AlertProviderProps) {
   const [alerts, setAlerts] = useState<Array<AlertComponentProps>>([]);
-  
+
   const timersId: Array<NodeJS.Timeout> = [];
 
+  /**
+   * Remove an Alert.
+   */
   const remove = useCallback((alert: AlertComponentProps) => {
     setAlerts((currentAlerts) => {
       const lengthBeforeRemove = currentAlerts.length;
@@ -52,10 +61,16 @@ export default function AlertProvider({
     });
   }, []);
 
+  /**
+   * Remove all the Alerts.
+   */
   const removeAll = useCallback(() => {
     alertContext.alerts.forEach(remove);
   }, [remove]);
 
+  /**
+   * Show a new Alert.
+   */
   const show = useCallback(
     (message = "", options = {}) => {
       const id = Math.random().toString(36).substring(2, 9);
@@ -73,10 +88,8 @@ export default function AlertProvider({
         id,
         message,
         options: alertOptions,
-        close: (_alert: AlertComponentProps) => {},
+        close: () => remove(alert)
       };
-
-      alert.close = () => remove(alert);
 
       if (alert.options.timeout) {
         const timerId = setTimeout(() => {
@@ -96,58 +109,67 @@ export default function AlertProvider({
     [position, remove, timeout, variant]
   );
 
+  /**
+   * Show a new Info Alert.
+   */
   const info = useCallback(
     (message = "", options: AlertOptions = {}) => {
-      options.variant = AlertVariant.INFO;
+      options.variant = AlertVariants.INFO;
       return show(message, options);
     },
     [show]
   );
 
+  /**
+   * Show a new Success Alert.
+   */
   const success = useCallback(
     (message = "", options: AlertOptions = {}) => {
-      options.variant = AlertVariant.SUCCESS;
+      options.variant = AlertVariants.SUCCESS;
       return show(message, options);
     },
     [show]
   );
 
+  /**
+   * Show a new Warning Alert.
+   */
   const warning = useCallback(
     (message = "", options: AlertOptions = {}) => {
-      options.variant = AlertVariant.WARNING;
+      options.variant = AlertVariants.WARNING;
       return show(message, options);
     },
     [show]
   );
 
+  /**
+   * Show a new Danger Alert.
+   */
   const danger = useCallback(
     (message = "", options: AlertOptions = {}) => {
-      options.variant = AlertVariant.DANGER;
+      options.variant = AlertVariants.DANGER;
       return show(message, options);
     },
     [show]
   );
 
+  /**
+   * The final parameters for the Alex system Context.
+   */
   const alertContext = {
     alerts,
     show,
     remove,
     removeAll,
+    info,
     success,
     warning,
     danger,
-    info,
   };
 
-  const alertsByPositions = alerts.reduce((result: {[key: string]: AlertComponentProps[]}, alert) => {
-    const key: string = alert.options.position ?? "";
-    if (!result[key]) {
-      result[key] = [];
-    }
-    result[key].push(alert);
-    return result;
-  }, {});
-
+  /**
+   * Hook to take care of disposing of the Alert once their timeout is reached.
+   */
   useEffect(() => {
     const timersIdRef = timersId;
 
@@ -156,24 +178,37 @@ export default function AlertProvider({
     };
   }, []);
 
+  /**
+   * Sort the Alerts by positions, for rendering
+   */
+  const alertsByPositions = alerts.reduce(
+    (result: { [key: string]: AlertComponentProps[] }, alert) => {
+      const key: string = alert.options.position ?? "";
+      if (!result[key]) {
+        result[key] = [];
+      }
+      result[key].push(alert);
+      return result;
+    },
+    {}
+  );
+
   return (
     <AlertContext.Provider value={alertContext}>
       {children}
       <div className={styles.alertProvider}>
-        {
-          Object.values(AlertAnchor).map(position => {
-            return (
-              <AlertWrapper key={position} position={position}>
-                {alertsByPositions[position]
-                  ? alertsByPositions[position].map(alert => {
-                    return <AlertComponent key={alert.id} {...alert} />
+        {Object.values(AlertPositions).map((position) => {
+          return (
+            <AlertWrapper key={position} position={position}>
+              {alertsByPositions[position]
+                ? alertsByPositions[position].map((alert) => {
+                    return <AlertComponent key={alert.id} {...alert} />;
                   })
-                  : null}
-              </AlertWrapper>
-            );
-          })
-        }
+                : null}
+            </AlertWrapper>
+          );
+        })}
       </div>
     </AlertContext.Provider>
-  )
+  );
 }

@@ -1,5 +1,5 @@
-import AlertProvider from "./AlertProvider";
-import AlertAnchor from "./AlertAnchor";
-import AlertVariant from "./AlertVariant";
+import { AlertProvider } from "./AlertProvider";
+import AlertPositions from "./AlertPositions";
+import AlertVariants from "./AlertVariants";
 
-export { AlertProvider, AlertAnchor, AlertVariant };
+export { AlertProvider, AlertPositions as AlertAnchor, AlertVariants as AlertVariant };

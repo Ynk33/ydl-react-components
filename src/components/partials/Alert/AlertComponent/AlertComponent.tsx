@@ -3,8 +3,11 @@ import styles from "./AlertComponent.module.scss";
 import AlertOptions from "../AlertOptions";
 import { useEffect, useState } from "react";
 import { FontProvider } from "../../../../lib";
-import AlertVariant from "../AlertVariant";
+import AlertVariants from "../AlertVariants";
 
+/**
+ * Properties of the AlertComponent.
+ */
 export interface AlertComponentProps {
   id: string;
   message: string;
@@ -12,28 +15,37 @@ export interface AlertComponentProps {
   close: (alert: AlertComponentProps) => void;
 }
 
+/**
+ * The actual Alert displayed to the user.
+ */
 export default function AlertComponent({
   id,
   message,
   options,
-  close
+  close,
 }: AlertComponentProps) {
   const [hide, setHide] = useState(false);
 
   const font = FontProvider.SecondaryFont;
 
+  /**
+   * Fade the Alert out before disposing of it.
+   */
   const closeAlert = () => {
     setHide(true);
-    console.log('hide');
     setInterval(() => {
-      close({id, message, options, close});
+      close({ id, message, options, close });
     }, 250);
-  }
+  };
 
-  useEffect(() => {
-    const closeTimeout = setInterval(closeAlert, options.timeout);
-    return () => clearInterval(closeTimeout);
-  });
+  // TODO: Enhances Alert style
 
-  return <div className={`${styles.alert} ${styles[options.variant ?? AlertVariant.INFO]} ${hide ? styles.hide : ''} ${font.className}`} onClick={closeAlert}>{message}</div>
+  return (
+    <div
+      className={`${styles.alert} ${styles[options?.variant ?? AlertVariants.INFO]} ${hide ? styles.hide : ""} ${font.className}`}
+      onClick={closeAlert}
+    >
+      {message}
+    </div>
+  );
 }
