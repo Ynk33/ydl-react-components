@@ -1,9 +1,9 @@
 import styles from "./AlertComponent.module.scss";
 
 import AlertOptions from "../AlertOptions";
-import { useEffect, useState } from "react";
-import { FontProvider } from "../../../../lib";
+import { useState } from "react";
 import AlertVariants from "../AlertVariants";
+import { FontProvider } from "../../../lib";
 
 /**
  * Properties of the AlertComponent.

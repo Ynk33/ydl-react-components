@@ -1,8 +1,8 @@
-import { ClientFontInitializer } from "../../../../lib";
 import { primaryFont, secondaryFont } from "@/fonts";
 import AlertProvider from "../AlertProvider/AlertProvider";
 import AlertPositions from "../AlertPositions";
 import AlertTester from "./AlertTester";
+import { ClientFontInitializer } from "../../../lib";
 
 export default {
   title: "Partials/Alert",
