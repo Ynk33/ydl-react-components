@@ -9,6 +9,7 @@ import AlertPositions from "../AlertPositions";
 interface AlertWrapperProps {
   children: ReactNode;
   position: AlertPositions;
+  offset: string;
 }
 
 /**
@@ -17,10 +18,11 @@ interface AlertWrapperProps {
 export default function AlertWrapper({
   children,
   position,
+  offset,
 }: AlertWrapperProps) {
   return (
     children && (
-      <div className={`${styles.wrapper} ${styles[`${position}`]}`}>
+      <div className={`${styles.wrapper} ${styles[`${position}`]}`} style={{margin: offset}}>
         {children}
       </div>
     )

@@ -16,6 +16,7 @@ const meta: Meta<typeof AlertProvider> = {
   // Args
   args: {
     position: AlertPositions.TOP_RIGHT,
+    offset: "50px 20px",
     timeout: 5000,
   },
   // Controls
@@ -25,6 +26,11 @@ const meta: Meta<typeof AlertProvider> = {
         type: "inline-radio"
       },
       options: Object.values(AlertPositions)
+    },
+    offset: {
+      control: {
+        type: "text"
+      }
     },
     timeout: {
       control : {

@@ -25,6 +25,10 @@ interface AlertProviderProps {
    */
   position: AlertPositions;
   /**
+   * How much the Alerts should be offset from the side of the window? (in a CSS fashion, ie. '10px 20px')
+   */
+  offset?: string;
+  /**
    * How long the Alert should stay up?
    */
   timeout?: number;
@@ -36,6 +40,7 @@ interface AlertProviderProps {
 export default function AlertProvider({
   children,
   position = AlertPositions.TOP_RIGHT,
+  offset = "50px 20px",
   timeout = 5000,
 }: AlertProviderProps) {
   const [alerts, setAlerts] = useState<Array<AlertComponentProps>>([]);
@@ -175,7 +180,7 @@ export default function AlertProvider({
       <div className={styles.alertProvider}>
         {Object.values(AlertPositions).map((position) => {
           return (
-            <AlertWrapper key={position} position={position}>
+            <AlertWrapper key={position} position={position} offset={offset}>
               {alertsByPositions[position]
                 ? alertsByPositions[position].map((alert) => {
                     return <AlertComponent key={alert.id} {...alert} />;
