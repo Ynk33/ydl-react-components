@@ -1,5 +1,5 @@
-@import "../../../styles/variables";
-@import "../../../styles/mixins";
+@import "../../../../styles/_variables.scss";
+@import "../../../../styles/_mixins.scss";
 
 $whiteFilter: invert(100%) sepia(0%) saturate(4613%) hue-rotate(44deg) brightness(84%) contrast(151%);
 
