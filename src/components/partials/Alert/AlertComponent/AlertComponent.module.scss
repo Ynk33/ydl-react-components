@@ -1,0 +1,63 @@
+@keyframes show {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes hide {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.alert {
+
+  border: 2px solid;
+  border-radius: 20px;
+
+  width: auto;
+  padding: 10px 20px;
+  margin: 20px;
+
+  text-align: center;
+  font-weight: bold !important;
+
+  cursor: pointer;
+  pointer-events: all;
+
+  animation: show 0.25s;
+
+  &.info {
+    border-color: darkslategrey;
+    background-color: rgba(skyblue, 0.2);
+    color: darkslategrey;
+  }
+
+  &.warning {
+    border-color: chocolate;
+    background-color: rgba(orange, 0.2);
+    color: chocolate;
+  }
+
+  &.danger {
+    border-color: darkred;
+    background-color: rgba(red, 0.2);
+    color: darkred;
+  }
+
+  &.success {
+    border-color: darkgreen;
+    background-color: rgba(green, 0.2);
+    color: darkgreen;
+  }
+
+  &.hide {
+    animation: hide 0.25s;
+  }
+}

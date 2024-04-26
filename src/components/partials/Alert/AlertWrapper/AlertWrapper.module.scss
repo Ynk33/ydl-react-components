@@ -1,0 +1,29 @@
+.wrapper {
+
+  position: absolute;
+  z-index: 1000;
+
+  &[class*=top] {
+    top: 0;
+  }
+
+  &[class*=bottom] {
+    bottom: 0;
+  }
+
+  &[class*=-left] {
+    left: 0;
+  }
+
+  &[class*=-right] {
+    right: 0;
+  }
+
+  &[class*=-center] {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  // Little hack to be sure partial class selectors work with NextJS
+  .top-left, .top-center, .top-right, .bottom-left, .bottom-center, .bottom-right { display: initial; }
+}

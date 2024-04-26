@@ -1,5 +1,5 @@
-import Alert from "./Alert";
+import AlertProvider from "./AlertProvider";
 import AlertAnchor from "./AlertAnchor";
 import AlertVariant from "./AlertVariant";
 
-export { Alert, AlertAnchor, AlertVariant as AlertType };
+export { AlertProvider, AlertAnchor, AlertVariant };
