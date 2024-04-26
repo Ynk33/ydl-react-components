@@ -3,19 +3,51 @@ import AlertProvider from "../AlertProvider/AlertProvider";
 import AlertPositions from "../AlertPositions";
 import AlertTester from "./AlertTester";
 import { ClientFontInitializer } from "../../../lib";
+import { Meta, StoryObj } from "@storybook/react";
 
-export default {
+const meta: Meta<typeof AlertProvider> = {
+  // Meta
   title: "Partials/Alert",
   component: AlertProvider,
   tags: ["autodocs"],
+  parameters: {
+    layout: "centered",
+  },
+  // Args
+  args: {
+    position: AlertPositions.TOP_RIGHT,
+    timeout: 5000,
+  },
+  // Controls
+  argTypes: {
+    position: {
+      control: {
+        type: "inline-radio"
+      },
+      options: Object.values(AlertPositions)
+    },
+    timeout: {
+      control : {
+        type: "number"
+      }
+    },
+    children: {
+      table: {
+        disable: true
+      },
+      control: false
+    }
+  },
 };
+export default meta;
 
-export const Alert = () => {
-  return (
+type Story = StoryObj<typeof AlertProvider>;
+
+export const AlertExamples: Story = {
+  render: (args) => (
     <>
       <AlertProvider
-        position={AlertPositions.TOP_RIGHT}
-        timeout={5000}
+        {...args}
       >
         <ClientFontInitializer
           primaryFont={primaryFont}
@@ -24,5 +56,5 @@ export const Alert = () => {
         <AlertTester />
       </AlertProvider>
     </>
-  );
+  ),
 };

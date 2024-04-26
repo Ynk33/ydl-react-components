@@ -1,7 +1,7 @@
 import styles from "./AlertComponent.module.scss";
 
 import AlertOptions from "../AlertOptions";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import AlertVariants from "../AlertVariants";
 import { FontProvider } from "../../../lib";
 
@@ -12,7 +12,7 @@ export interface AlertComponentProps {
   id: string;
   message: string;
   options: AlertOptions;
-  close: (alert: AlertComponentProps) => void;
+  close: (id: string) => void;
 }
 
 /**
@@ -34,9 +34,17 @@ export default function AlertComponent({
   const closeAlert = () => {
     setHide(true);
     setInterval(() => {
-      close({ id, message, options, close });
+      close(id);
     }, 250);
   };
+
+  /**
+   * Hook to dispose of the Alert once its timeout is reached.
+   */
+  useEffect(() => {
+    const timeout = setInterval(closeAlert, options.timeout);
+    return () => clearTimeout(timeout);
+  }, [options]);
 
   // TODO: Enhances Alert style
 

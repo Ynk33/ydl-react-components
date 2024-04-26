@@ -1,5 +1,4 @@
-import useAlert from "../../../../lib/hooks/useAlert";
-import AlertPositions from "../AlertPositions";
+import useAlert from "../useAlert";
 
 export default function AlertTester() {
   const alert = useAlert();

@@ -3,7 +3,7 @@ import styles from "./AlertProvider.module.scss";
 import { ReactNode, useCallback, useEffect, useState } from "react";
 import AlertPositions from "../AlertPositions";
 import AlertVariants from "../AlertVariants";
-import AlertContext from "../AlertContext";
+import AlertContext from "../AlertContext/AlertContext";
 import AlertOptions from "../AlertOptions";
 import AlertWrapper from "../AlertWrapper/AlertWrapper";
 import AlertComponent, {
@@ -23,10 +23,6 @@ interface AlertProviderProps {
    */
   position: AlertPositions;
   /**
-   * What variant should the Alert component use?
-   */
-  variant?: AlertVariants;
-  /**
    * How long the Alert should stay up?
    */
   timeout?: number;
@@ -38,20 +34,20 @@ interface AlertProviderProps {
 export default function AlertProvider({
   children,
   position = AlertPositions.TOP_RIGHT,
-  variant = AlertVariants.INFO,
   timeout = 5000,
 }: AlertProviderProps) {
   const [alerts, setAlerts] = useState<Array<AlertComponentProps>>([]);
 
-  const timersId: Array<NodeJS.Timeout> = [];
-
   /**
    * Remove an Alert.
    */
-  const remove = useCallback((alert: AlertComponentProps) => {
+  const remove = useCallback((id: string) => {
     setAlerts((currentAlerts) => {
+      const alert = currentAlerts.find((a) => a.id === id);
+      if (alert === undefined) return currentAlerts;
+
       const lengthBeforeRemove = currentAlerts.length;
-      const filteredAlerts = currentAlerts.filter((a) => a.id !== alert.id);
+      const filteredAlerts = currentAlerts.filter((a) => a.id !== id);
 
       if (lengthBeforeRemove > filteredAlerts.length && alert.options.onClose) {
         alert.options.onClose();
@@ -65,7 +61,7 @@ export default function AlertProvider({
    * Remove all the Alerts.
    */
   const removeAll = useCallback(() => {
-    alertContext.alerts.forEach(remove);
+    alertContext.alerts.forEach(alert => remove(alert.id));
   }, [remove]);
 
   /**
@@ -78,7 +74,6 @@ export default function AlertProvider({
       const alertOptions: AlertOptions = {
         position,
         timeout,
-        variant,
         onOpen: () => {},
         onClose: () => {},
         ...options,
@@ -88,25 +83,15 @@ export default function AlertProvider({
         id,
         message,
         options: alertOptions,
-        close: () => remove(alert)
+        close: () => remove(alert.id),
       };
-
-      if (alert.options.timeout) {
-        const timerId = setTimeout(() => {
-          remove(alert);
-
-          timersId.splice(timersId.indexOf(timerId), 1);
-        }, alert.options.timeout);
-
-        timersId.push(timerId);
-      }
 
       setAlerts((state) => state.concat(alert));
       if (alert.options.onOpen) alert.options.onOpen();
 
       return alert;
     },
-    [position, remove, timeout, variant]
+    [position, remove, timeout]
   );
 
   /**
@@ -166,17 +151,6 @@ export default function AlertProvider({
     warning,
     danger,
   };
-
-  /**
-   * Hook to take care of disposing of the Alert once their timeout is reached.
-   */
-  useEffect(() => {
-    const timersIdRef = timersId;
-
-    return () => {
-      timersIdRef.forEach(clearTimeout);
-    };
-  }, []);
 
   /**
    * Sort the Alerts by positions, for rendering
