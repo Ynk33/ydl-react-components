@@ -1,3 +1,5 @@
+"use client";
+
 import styles from "./AlertProvider.module.scss";
 
 import { ReactNode, useCallback, useEffect, useState } from "react";
