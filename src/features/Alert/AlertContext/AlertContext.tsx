@@ -1,3 +1,5 @@
+"use client";
+
 import { createContext } from "react";
 import AlertOptions from "../AlertOptions";
 import AlertPositions from "../AlertPositions";
