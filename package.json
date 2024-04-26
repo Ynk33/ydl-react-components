@@ -1,6 +1,6 @@
 {
   "name": "ydl-react-components",
-  "version": "2.0.5",
+  "version": "2.0.6",
   "type": "module",
   "main": "src/index.ts",
   "files": [
@@ -39,6 +39,7 @@
     "sass-loader": "^14.2.1",
     "storybook": "^8.0.9",
     "ts-jest": "^29.1.2",
+    "tsconfig-paths-webpack-plugin": "^4.1.0",
     "typescript": "^5.4.5"
   },
   "peerDependencies": {

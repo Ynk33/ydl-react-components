@@ -8,7 +8,7 @@ const config: StorybookConfig = {
     "@storybook/addon-essentials",
     "@chromatic-com/storybook",
     "@storybook/addon-interactions",
-    "@storybook/addon-mdx-gfm"
+    "@storybook/addon-mdx-gfm",
   ],
   framework: {
     name: "@storybook/nextjs",
@@ -16,6 +16,6 @@ const config: StorybookConfig = {
   },
   docs: {
     autodocs: "tag",
-  },
+  }
 };
 export default config;

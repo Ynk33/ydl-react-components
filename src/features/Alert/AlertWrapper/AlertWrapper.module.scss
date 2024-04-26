@@ -1,5 +1,13 @@
 .wrapper {
 
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 0;
+
+  margin: 5px;
+
   position: absolute;
   z-index: 1000;
 
@@ -17,11 +25,13 @@
 
   &[class*=-right] {
     right: 0;
+    align-items: flex-end;
   }
 
   &[class*=-center] {
     left: 50%;
     transform: translateX(-50%);
+    align-items: center;
   }
   
   // Little hack to be sure partial class selectors work with NextJS

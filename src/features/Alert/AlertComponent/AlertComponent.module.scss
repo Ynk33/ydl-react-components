@@ -1,3 +1,5 @@
+@import "../../../styles/variables";
+
 @keyframes show {
   from {
     opacity: 0;
@@ -16,13 +18,16 @@
   }
 }
 
+$fadeInDuration: 0.25;
+$fadeOutDuration: 0.1;
+
 .alert {
 
   border: 2px solid;
   border-radius: 20px;
 
   padding: 10px 20px;
-  margin: 20px;
+  margin: 5px;
 
   text-align: center;
   font-weight: bold !important;
@@ -30,33 +35,40 @@
   cursor: pointer;
   pointer-events: all;
 
-  animation: show 0.25s;
+  animation: show $fadeInDuration+s;
 
   &.info {
-    border-color: darkslategrey;
-    background-color: rgba(skyblue, 0.2);
-    color: darkslategrey;
+    border-color: $infoBorder;
+    background-color: $info;
+    color: $infoBorder;
   }
 
   &.warning {
-    border-color: chocolate;
-    background-color: rgba(orange, 0.2);
-    color: chocolate;
+    border-color: $warningBorder;
+    background-color: $warning;
+    color: $warningBorder;
   }
 
   &.danger {
-    border-color: darkred;
-    background-color: rgba(red, 0.2);
-    color: darkred;
+    border-color: $dangerBorder;
+    background-color: $danger;
+    color: $dangerBorder;
   }
 
   &.success {
-    border-color: darkgreen;
-    background-color: rgba(green, 0.2);
-    color: darkgreen;
+    border-color: $successBorder;
+    background-color: $success;
+    color: $successBorder;
   }
 
   &.hide {
-    animation: hide 0.25s;
+    animation: hide $fadeOutDuration+s;
   }
+}
+
+/*
+  EXPORT
+*/
+:export {
+  fadeOutDuration: $fadeOutDuration;
 }

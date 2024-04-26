@@ -1,4 +1,4 @@
-import { primaryFont, secondaryFont } from "@/fonts";
+import { primaryFont, secondaryFont } from "../../../styles/fonts";
 import AlertProvider from "../AlertProvider/AlertProvider";
 import AlertPositions from "../AlertPositions";
 import AlertTester from "./AlertTester";

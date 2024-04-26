@@ -35,7 +35,7 @@ export default function AlertComponent({
     setHide(true);
     setInterval(() => {
       close(id);
-    }, 250);
+    }, Number.parseFloat(styles.fadeOutDuration) * 1000 * 0.9);
   };
 
   /**
@@ -45,8 +45,6 @@ export default function AlertComponent({
     const timeout = setInterval(closeAlert, options.timeout);
     return () => clearTimeout(timeout);
   }, [options]);
-
-  // TODO: Enhances Alert style
 
   return (
     <div
