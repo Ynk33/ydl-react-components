@@ -1,4 +1,3 @@
-export * from "./Alert";
 export * from "./Background";
 export * from "./Carousel";
 export * from "./Modal";
