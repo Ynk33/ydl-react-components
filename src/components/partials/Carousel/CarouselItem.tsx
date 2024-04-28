@@ -3,8 +3,8 @@ import styles from "./Carousel.module.scss";
 import Image from "next/image";
 import { Fill } from "./Carousel";
 import { Picture } from "../../../lib";
-import { FontProvider } from "../../../lib/fonts";
 import { Background } from "../Background";
+import { useFonts } from "../../../features";
 
 export default function CarouselItem({
   id,
@@ -18,8 +18,9 @@ export default function CarouselItem({
   showCaption?: boolean
 }) {
 
-  const primaryFont = FontProvider.PrimaryFont;
-  const secondaryFont = FontProvider.SecondaryFont;
+  const fonts = useFonts();
+  const primaryFont = fonts.primaryFont;
+  const secondaryFont = fonts.secondaryFont;
 
   return (
     <div className={styles.carouselItem} id={id}>
