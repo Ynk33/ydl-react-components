@@ -3,7 +3,7 @@ import styles from "./AlertComponent.module.scss";
 import AlertOptions from "../AlertOptions";
 import { useEffect, useState } from "react";
 import AlertVariants from "../AlertVariants";
-import { FontProvider } from "../../../lib";
+import { useFonts } from "../../Fonts";
 
 /**
  * Properties of the AlertComponent.
@@ -26,7 +26,7 @@ export default function AlertComponent({
 }: AlertComponentProps) {
   const [hide, setHide] = useState(false);
 
-  const font = FontProvider.SecondaryFont;
+  const font = useFonts().secondaryFont;
 
   /**
    * Fade the Alert out before disposing of it.

@@ -15,7 +15,7 @@ type AlertFunctionSignature = (
 ) => AlertComponentProps;
 
 /**
- * Expose the required argument to define the Context of the Alert system.
+ * Define the Context of the Alert system.
  */
 export interface AlertContext {
   alerts: Array<AlertComponentProps>;
@@ -60,5 +60,4 @@ const defaultContext: AlertContext = {
  * Create the Alert system Context.
  */
 const AlertContext = createContext<AlertContext>(defaultContext);
-
 export default AlertContext;

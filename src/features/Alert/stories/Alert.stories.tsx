@@ -1,15 +1,26 @@
-import { primaryFont, secondaryFont } from "../../../styles/fonts";
 import AlertProvider from "../AlertProvider/AlertProvider";
 import AlertPositions from "../AlertPositions";
 import AlertTester from "./AlertTester";
-import { ClientFontInitializer } from "../../../lib";
 import { Meta, StoryObj } from "@storybook/react";
+import { FontsProvider } from "../../Fonts";import {
+  Caveat,
+  Didact_Gothic,
+} from "next/font/google";
+
+const caveat = Caveat({
+  weight: "400",
+  subsets: ["latin"],
+});
+
+const didactGothic = Didact_Gothic({
+  weight: "400",
+  subsets: ["latin"],
+});
 
 const meta: Meta<typeof AlertProvider> = {
   // Meta
-  title: "Partials/Alert",
+  title: "Features/Alert",
   component: AlertProvider,
-  tags: ["autodocs"],
   parameters: {
     layout: "centered",
   },
@@ -52,15 +63,13 @@ type Story = StoryObj<typeof AlertProvider>;
 export const AlertExamples: Story = {
   render: (args) => (
     <>
-      <AlertProvider
-        {...args}
-      >
-        <ClientFontInitializer
-          primaryFont={primaryFont}
-          secondaryFont={secondaryFont}
-        />
-        <AlertTester />
-      </AlertProvider>
+      <FontsProvider primaryFont={caveat} secondaryFont={didactGothic}>
+        <AlertProvider
+          {...args}
+        >
+          <AlertTester />
+        </AlertProvider>
+      </FontsProvider>
     </>
   ),
 };
