@@ -1,3 +1,5 @@
+"use client";
+
 import { NextFont } from "next/dist/compiled/@next/font";
 import FontsContext from "../FontsContext/FontsContext";
 import { ReactNode } from "react";
