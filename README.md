@@ -74,9 +74,8 @@ export default function MyComponent() {
 
 You can easily share your NextFont accross the components of your application using the FontsProvider.
 
-:::note
+[!NOTE]
 For now, it supports 2 fonts. As this library is designed on my own needs, it may evolve later on if I need to support more than 2 fonts.
-:::
 
 At the root of your app, declare the FontsProvider with the fonts you'd like to use.
 
