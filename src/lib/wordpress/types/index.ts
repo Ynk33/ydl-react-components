@@ -7,6 +7,7 @@ import type { Maintenance } from "./Maintenance";
 import type { Menu } from "./Menu";
 import type { Metadata } from "./Metadata";
 import type { Picture } from "./Picture";
+import type { Sections } from "./Sections";
 import type { Settings } from "./Settings";
 import type { SocialMedia } from "./SocialMedia";
 
@@ -22,6 +23,7 @@ export type {
   Menu,
   Metadata,
   Picture,
+  Sections,
   Settings,
   SocialMedia
 }

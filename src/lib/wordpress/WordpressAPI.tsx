@@ -9,6 +9,7 @@ import {
   Maintenance,
   Menu,
   Metadata,
+  Sections,
   Settings,
 } from "./types";
 
@@ -47,6 +48,7 @@ class WordpressAPI {
     maintenance: this.API_URL + "/custom/maintenance",
     metadata: this.API_URL + "/custom/metadata",
     menu: this.API_URL + "/custom/menu",
+    sections: this.API_URL + "/custom/sections",
     theme: this.API_URL + "/custom/theme",
     about: this.API_URL + "/custom/about",
     contact: this.API_URL + "/custom/contact",
@@ -173,6 +175,17 @@ class WordpressAPI {
     noStore();
     return await WordpressAPI.getInstance().Get<Menu>(
       WordpressAPI.getInstance().URLs.menu
+    );
+  }
+
+  /**
+   * Fetch the Sections from Wordpress API.
+   * @returns The Promise to get the requested Sections.
+   */
+  public static async fetchSections(): Promise<Sections> {
+    noStore();
+    return await WordpressAPI.getInstance().Get<Sections>(
+      WordpressAPI.getInstance().URLs.sections
     );
   }
 
