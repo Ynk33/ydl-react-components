@@ -2,7 +2,6 @@
  * NAVBAR
  */
 type MenuItem = {
-  ID: number;
   title: string;
   url: string;
 };
