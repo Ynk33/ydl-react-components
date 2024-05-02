@@ -84,7 +84,7 @@ class WordpressAPI {
       urlFinal += `${key}=${value}`;
     });
 
-    console.log("Fetching " + url + "...");
+    console.log("Fetching " + urlFinal + "...");
     try {
       const response: Response = await fetch(url);
       if (!response.ok) {
