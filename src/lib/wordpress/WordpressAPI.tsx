@@ -25,6 +25,9 @@ class WordpressAPI {
   public static getInstance() {
     if (WordpressAPI._instance === undefined) {
       WordpressAPI._instance = new WordpressAPI();
+      if (WordpressAPI._instance.API_URL.charAt(WordpressAPI._instance.API_URL.length - 1) === ":") {
+        WordpressAPI._instance.API_URL = WordpressAPI._instance.API_URL.slice(0, WordpressAPI._instance.API_URL.length - 2);
+      }
     }
 
     return WordpressAPI._instance;
