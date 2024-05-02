@@ -6,11 +6,13 @@ import {
   ContactMessageResponse,
   Footer,
   Galleries,
+  Gallery,
   Maintenance,
   Menu,
   Metadata,
   Sections,
   Settings,
+  Tag,
 } from "./types";
 
 /**
@@ -44,6 +46,7 @@ class WordpressAPI {
   private URLs = {
     // GET
     settings: this.API_URL,
+    tags: this.API_URL + this.RESSOURCE_PATH + "/tags",
 
     maintenance: this.API_URL + "/custom/maintenance",
     metadata: this.API_URL + "/custom/metadata",
@@ -67,9 +70,20 @@ class WordpressAPI {
   /**
    * Send GET query to the specified URL.
    * @param url URL to perform the GET query to.
+   * @param args Array of arguments to pass into the GET query.
    * @returns A Promise with the response, in the provided T format.
    */
-  private async Get<T>(url: string): Promise<T> {
+  private async Get<T>(
+    url: string,
+    args: { [key: string]: string } = {}
+  ): Promise<T> {
+    // Build url with optional args.
+    let urlFinal = url;
+    Object.entries(args).forEach(([key, value], i) => {
+      urlFinal += i === 0 ? "?" : "&";
+      urlFinal += `${key}=${value}`;
+    });
+
     console.log("Fetching " + url + "...");
     try {
       const response: Response = await fetch(url);
@@ -102,9 +116,9 @@ class WordpressAPI {
       const response: Response = await fetch(url, {
         method: "POST",
         headers: {
-          'Content-Type': 'application/json'
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify(body)
+        body: JSON.stringify(body),
       });
 
       if (!response.ok) {
@@ -168,6 +182,20 @@ class WordpressAPI {
   }
 
   /**
+   * Fetch Tags from Wordpress API.
+   * @param args Array of arguments to pass into the GET query.
+   * @returns The Promise to get a list of Tags.
+   */
+  public static async fetchTags(
+    args: { [key: string]: string } = {}
+  ): Promise<Tag[]> {
+    return await WordpressAPI.getInstance().Get<Tag[]>(
+      WordpressAPI.getInstance().URLs.tags,
+      args
+    );
+  }
+
+  /**
    * Fetch the Menu from Wordpress API.
    * @returns The Promise to get the requested Menu.
    */
@@ -193,11 +221,16 @@ class WordpressAPI {
    * Fetch the Highlights (as Galleries) from Wordpress API.
    * @returns The Promise to get the requested Galleries.
    */
-  public static async fetchHighlights(): Promise<Galleries> {
+  public static async fetchHighlights(): Promise<Gallery> {
+    const tags = await WordpressAPI.fetchTags({ slug: "highlights" });
+    
     noStore();
-    return await WordpressAPI.getInstance().Get<Galleries>(
-      WordpressAPI.getInstance().URLs.highlights
+    const galleries = await WordpressAPI.getInstance().Get<Galleries>(
+      WordpressAPI.getInstance().URLs.galleries,
+      { tags: tags[0].id.toString() }
     );
+
+    return galleries[0];
   }
 
   /**
@@ -205,9 +238,12 @@ class WordpressAPI {
    * @returns The Promise to get the requested Galleries.
    */
   public static async fetchGalleries(): Promise<Galleries> {
+    const tags = await WordpressAPI.fetchTags({ slug: "highlights" });
+
     noStore();
     return await WordpressAPI.getInstance().Get<Galleries>(
-      WordpressAPI.getInstance().URLs.galleries
+      WordpressAPI.getInstance().URLs.galleries,
+      { tags_exclude: tags[0].id.toString() }
     );
   }
 
@@ -238,7 +274,9 @@ class WordpressAPI {
    * @param message The message to send.
    * @returns The Promise to get an answer from the server.
    */
-  public static async sendMessage(message: ContactMessage): Promise<ContactMessageResponse> {
+  public static async sendMessage(
+    message: ContactMessage
+  ): Promise<ContactMessageResponse> {
     return await WordpressAPI.getInstance().Post<ContactMessageResponse>(
       WordpressAPI.getInstance().URLs.sendEmail,
       message

@@ -10,6 +10,7 @@ import type { Picture } from "./Picture";
 import type { Sections } from "./Sections";
 import type { Settings } from "./Settings";
 import type { SocialMedia } from "./SocialMedia";
+import type { Tag } from "./Tag";
 
 export type {
   About,
@@ -25,5 +26,6 @@ export type {
   Picture,
   Sections,
   Settings,
-  SocialMedia
+  SocialMedia,
+  Tag
 }
