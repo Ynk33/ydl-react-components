@@ -25,9 +25,6 @@ class WordpressAPI {
   public static getInstance() {
     if (WordpressAPI._instance === undefined) {
       WordpressAPI._instance = new WordpressAPI();
-      if (WordpressAPI._instance.API_URL.charAt(WordpressAPI._instance.API_URL.length - 1) === ":") {
-        WordpressAPI._instance.API_URL = WordpressAPI._instance.API_URL.slice(0, WordpressAPI._instance.API_URL.length - 2);
-      }
     }
 
     return WordpressAPI._instance;
@@ -47,6 +44,9 @@ class WordpressAPI {
    * @var {Object} URLs A convenient way to store the URLs to the Wordpress API
    */
   private URLs = {
+    // TEST
+    naked: this.API_URL,
+
     // GET
     settings: this.API_URL,
     tags: this.API_URL + this.RESSOURCE_PATH + "/tags",
@@ -62,7 +62,6 @@ class WordpressAPI {
 
     categories: this.API_URL + this.RESSOURCE_PATH + "/categories",
     pages: this.API_URL + this.RESSOURCE_PATH + "/pages",
-    highlights: this.API_URL + this.RESSOURCE_PATH + "/highlight",
     galleries: this.API_URL + this.RESSOURCE_PATH + "/gallery",
     mediaFile: this.API_URL + this.RESSOURCE_PATH + "/media",
 
@@ -73,21 +72,17 @@ class WordpressAPI {
   /**
    * Send GET query to the specified URL.
    * @param url URL to perform the GET query to.
-   * @param args Array of arguments to pass into the GET query.
+   * @param params Array of arguments to pass into the GET query.
    * @returns A Promise with the response, in the provided T format.
    */
   private async Get<T>(
     url: string,
-    args: { [key: string]: string } = {}
+    params: { [key: string]: string } = {}
   ): Promise<T> {
-    // Build url with optional args.
-    let urlFinal = url;
-    Object.entries(args).forEach(([key, value], i) => {
-      urlFinal += i === 0 ? "?" : "&";
-      urlFinal += `${key}=${value}`;
-    });
+    // Build url with optional params.
+    url += "?" + new URLSearchParams(params);
 
-    console.log("Fetching " + urlFinal + "...");
+    console.log("Fetching " + url + "...");
     try {
       const response: Response = await fetch(url);
       if (!response.ok) {
